@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>New App</title>
+  </head>
+  <body>
+    minion1 - 192.168.50.11<br>
+    minion2 - 192.168.50.12
+    <div>
+      <label>Name:</label>
+      <input type="text" ng-model="yourName" placeholder="Enter a name here">
+      <hr>
+      <h1>Hello {{yourName}}!</h1>
+    </div>
+
+    <div ng-controller="GetBackendDataCtrl">
+      {{values.data}}
+    </div>
+    <!-- 
+      <script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+      <script src="https://code.angularjs.org/1.5.8/angular-resource.min.js"></script>
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+
