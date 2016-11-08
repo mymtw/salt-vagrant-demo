@@ -642,6 +642,8 @@
 #win_gitrepos:
 #  - 'https://github.com/saltstack/salt-winrepo.git'
 file_roots:
+  base:
+    - /srv/salt
   dev:
     - /srv/salt/dev
 
