@@ -1,6 +1,6 @@
 dev:
   'minion1': 
-    - dev.backend
+    - backend
 #qa:
 #  'minion4': backend
 #prod:

@@ -12,6 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master_config.vm.box = "ubuntu/xenial64"
     master_config.vm.host_name = 'saltmaster.local'
     master_config.vm.network "private_network", ip: "192.168.50.10"
+    master_config.vm.synced_folder "saltstack/salt/dev", "/srv/salt/dev"
     master_config.vm.synced_folder "saltstack/salt/", "/srv/salt"
     master_config.vm.synced_folder "saltstack/pillar/", "/srv/pillar"
 
