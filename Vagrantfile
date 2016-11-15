@@ -1,6 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# release version 2016.3.4
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -28,7 +29,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                           "minion2" => "saltstack/keys/minion2.pub"
                          }
 
-      salt.install_type = "stable"
+      salt.install_type = "git"
+      salt.install_args = "v2016.3.4"
       salt.install_master = true
       salt.no_minion = true
       salt.verbose = true
@@ -46,7 +48,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.minion_config = "saltstack/etc/minion1"
       salt.minion_key = "saltstack/keys/minion1.pem"
       salt.minion_pub = "saltstack/keys/minion1.pub"
-      salt.install_type = "stable"
+      salt.install_type = "git"
+      salt.install_args = "v2016.3.4"
       salt.verbose = true
       salt.colorize = true
       salt.bootstrap_options = "-P -c /tmp"
@@ -66,7 +69,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.minion_config = "saltstack/etc/minion2"
       salt.minion_key = "saltstack/keys/minion2.pem"
       salt.minion_pub = "saltstack/keys/minion2.pub"
-      salt.install_type = "stable"
+      salt.install_type = "git"
+      salt.install_args = "v2016.3.4"
       salt.verbose = true
       salt.colorize = true
       salt.bootstrap_options = "-P -c /tmp"
