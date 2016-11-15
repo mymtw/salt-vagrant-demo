@@ -1,4 +1,3 @@
-pillar_source_merging_strategy: none
 file_roots:
   dev:
     - /srv/salt
