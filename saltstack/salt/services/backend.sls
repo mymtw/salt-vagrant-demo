@@ -33,10 +33,6 @@ create virtualenv:
     - system_site_packages: False
     - requirements: {{ pillar['app_dir'] }}/requirements.txt
 
-remove nginx default config file:
-  file.absent:
-    - name: /etc/nginx/sites-available/default
-
 create nginx backend config file:
   file.managed:
     - name: /etc/nginx/sites-available/backend.conf
@@ -60,6 +56,11 @@ make sure nginx service installed and is running:
     - reload: True
     - watch:
       - file: /etc/nginx/sites-available/backend.conf
+      - file: /etc/nginx/sites-available/default
+
+remove nginx default config file:
+  file.absent:
+    - name: /etc/nginx/sites-available/default
 
 create supervisor config file:
   file.managed:
