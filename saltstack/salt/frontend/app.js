@@ -1,10 +1,10 @@
-var app = angular.module('testApp', []);
+var app = angular.module('testApp', ['config']);
 
-app.controller('GetBackendDataCtrl', function($scope, $http) {
+app.controller('GetBackendDataCtrl', function($scope, $http, APP) {
   $http
-    .get('http://127.0.0.1:8080/')
+    .get(APP.API_HOST)
     .then(function(response) {
       $scope.values = response.data
+      console.log('backend data ' + response.data.data)
     });
 });
-

@@ -37,18 +37,19 @@ remove nginx default config file:
   file.absent:
     - name: /etc/nginx/sites-available/default
 
-create nginx config file:
+create nginx backend config file:
   file.managed:
     - name: /etc/nginx/sites-available/backend.conf
     - source: salt://configs/backend/nginx_backend.conf
     - makedirs: True
 
-make symlink for backend conf:
+make symlink for backend config:
   file.symlink:
     - name: /etc/nginx/sites-enabled/backend.conf
     - target: /etc/nginx/sites-available/backend.conf
+    - makedirs: True
 
-make sure the nginx service installed and is running:
+make sure nginx service installed and is running:
   pkg.installed:
     - names: 
       - nginx
@@ -58,7 +59,7 @@ make sure the nginx service installed and is running:
     - enable: True
     - reload: True
     - watch:
-      - file: /etc/nginx/sites-enabled/backend.conf
+      - file: /etc/nginx/sites-available/backend.conf
 
 create supervisor config file:
   file.managed:
@@ -76,7 +77,8 @@ make sure the supervisor service installed and running:
   service.running:
     - name: supervisor
     - enable: True
-    - reload: True
+    - restart: True
     - watch:
       - file: /etc/supervisor/conf.d/backend.conf
+      - file: {{ pillar['app_dir'] }}/*
 

@@ -1,12 +1,10 @@
 file_roots:
-  dev:
-    - /srv/salt
-  qa:
+  base:
     - /srv/salt
 
 pillar_roots:
   dev:
-    - /srv/pillar
+    - /srv/pillar/dev
   qa:
-    - /srv/pillar
+    - /srv/pillar/qa
 

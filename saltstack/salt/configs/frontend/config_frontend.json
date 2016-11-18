@@ -1,0 +1,6 @@
+{
+  "APP": {
+    "API_HOST": "http://{{ env_api_host }}/"
+  }
+}
+
