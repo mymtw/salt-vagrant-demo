@@ -17,18 +17,12 @@ already be installed.
     cd salt-vagrant-demo
     vagrant up
 
-
-This will download an Ubuntu  VirtualBox image and create three virtual
-machines for you. One will be a Salt Master named `master` and two will be Salt
-Minions named `minion1` and `minion2`.  The Salt Minions will point to the Salt
-Master and the Minion's keys will already be accepted. Because the keys are
-pre-generated and reside in the repo, please be sure to regenerate new keys if
-you use this for production purposes.
-
-You can then run the following commands to log into the Salt Master and begin
-using Salt.
-
 .. code-block:: bash
 
     vagrant ssh master
     sudo salt \* test.ping
+    salt minion1 state.apply services.backend pillarenv=dev
+    salt minion1 state.apply services.backend pillarenv=qa
+
+    salt minion2 state.apply services.frontend pillarenv=dev
+    salt minion2 state.apply services.frontend pillarenv=qa
